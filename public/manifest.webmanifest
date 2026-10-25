@@ -1,0 +1,37 @@
+{
+  "name": "AgriPulse — Precision Farming",
+  "short_name": "AgriPulse",
+  "description": "Smart precision farming and automated irrigation decisions for every field.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f7f2",
+  "theme_color": "#082014",
+  "categories": ["agriculture", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Irrigation planner",
+      "short_name": "Irrigation",
+      "url": "/irrigation"
+    },
+    {
+      "name": "Field map",
+      "short_name": "Fields",
+      "url": "/fields"
+    }
+  ]
+}

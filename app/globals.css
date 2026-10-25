@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page: #f7f7f2;
+  --ink: #0d1b14;
+  --muted: #5b6b61;
+  --line: #e3e6dd;
+  --card: #ffffff;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--page);
+  background-image:
+    radial-gradient(900px 480px at 88% -10%, rgba(132, 195, 65, 0.13), transparent 65%),
+    radial-gradient(700px 380px at -5% 0%, rgba(53, 141, 81, 0.09), transparent 60%);
+  background-repeat: no-repeat;
+  color: var(--ink);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #b9dec0;
+  color: #082014;
+}
+
+:focus-visible {
+  outline: 2px solid #24713e;
+  outline-offset: 2px;
+}
+
+/* Thin, quiet scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cfd6cc transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #cfd6cc;
+  border-radius: 999px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-[#e3e6dd] bg-white shadow-card;
+  }
+
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-[#5b6b61];
+  }
+
+  .h-display {
+    @apply font-display tracking-[-0.02em] text-ink;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+      active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-canopy-700 text-white shadow-sm hover:bg-canopy-800;
+  }
+
+  .btn-secondary {
+    @apply btn border border-[#d9dfd5] bg-white text-ink hover:border-canopy-300 hover:bg-canopy-50;
+  }
+
+  .btn-ghost {
+    @apply btn text-canopy-800 hover:bg-canopy-50;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-[#d9dfd5] bg-white px-3.5 py-2.5 text-sm text-ink
+      placeholder:text-[#5f6e64] focus:border-canopy-500 focus:outline-none focus:ring-2 focus:ring-canopy-200;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-semibold text-[#415047];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold;
+  }
+
+  .divide-soft > * + * {
+    @apply border-t border-[#eef0e9];
+  }
+}
+
+/* Leaflet chrome tuned to the AgriPulse palette */
+.leaflet-container {
+  font-family: inherit;
+  background: #e8eee3;
+}
+.leaflet-control-zoom a {
+  border-radius: 10px !important;
+  color: #133b24 !important;
+  border-color: #d9dfd5 !important;
+}
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 8px 24px -12px rgba(13, 27, 20, 0.35) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 14px !important;
+  box-shadow: 0 18px 40px -18px rgba(13, 27, 20, 0.4) !important;
+}
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+.leaflet-popup-tip {
+  box-shadow: none !important;
+}
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+.leaflet-tooltip.plot-label {
+  background: rgba(8, 32, 20, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 2px 8px;
+  box-shadow: 0 2px 8px rgba(8, 32, 20, 0.25);
+  white-space: nowrap;
+}
+.leaflet-tooltip.plot-label::before {
+  display: none;
+}
+
+/* Native range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #e3e6dd;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #24713e;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(13, 27, 20, 0.35);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #24713e;
+  border: 3px solid #fff;
+  cursor: pointer;
+}
+
+/* Sunlight / high-contrast field mode */
+html.sunlight body {
+  --ink: #04120a;
+  --muted: #253a2d;
+  --line: #66756a;
+  background-color: #fffdf5;
+  background-image: none;
+  color: #04120a;
+  font-weight: 500;
+  letter-spacing: 0.002em;
+}
+html.sunlight .card {
+  border-color: #9aa99b;
+  box-shadow: 0 2px 0 rgba(13, 27, 20, 0.1);
+}
+html.sunlight .text-\[\#5b6b61\],
+html.sunlight .text-slate-500,
+html.sunlight .text-slate-400 {
+  color: #24382c !important;
+}
+html.sunlight .border-\[\#e3e6dd\] {
+  border-color: #9aa99b !important;
+}
+html.sunlight .leaflet-tile-pane {
+  filter: contrast(1.12) saturate(1.08);
+}
+
+/* Toast entrance */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.toast-in {
+  animation: toast-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
